@@ -1,0 +1,99 @@
+---
+version: "2"
+use_cases:
+- name: default
+  sections:
+  - name: Cycloid Worker
+    groups:
+    - name: Virtual machine specifications
+      technologies: [terraform]
+      vars:
+      - name: "Instance type"
+        description: "Instance type for the worker."
+        key: vm_instance_type
+        widget: slider_list
+        type: string
+        default: "Standard_DS2_v2"
+        values:
+            - "Standard_DS1_v2"
+            - "Standard_DS2_v2"
+            - "Standard_DS3_v2"
+        required: true
+      - name: "Disk size"
+        unit: Go
+        description: "Disk size for the instance."
+        key: vm_disk_size
+        widget: slider_range
+        type: integer
+        default: 20
+        values:
+            - 20
+            - 250
+        required: true
+
+    - name: Cycloid core integration
+      technologies: [pipeline]
+      vars:
+      - name: "Team ID"
+        description: "This parameter can be obtained in Cycloid console, by clicking on your profile picture at the top right corner, then organization settings, then use the value of the ci_team_member field."
+        key: team_id
+        widget: simple_text
+        type: string
+        default: ""
+        required: true
+      - name: "Worker Private Key"
+        description: "Leave default value if the worker is intended to run for the current organization. Otherwise, add Cycloid-worker-keys.ssh_prv credentials of the target organization."
+        key: worker_key
+        widget: cy_cred
+        type: string
+        default: "((cycloid-worker-keys.ssh_prv))"
+        required: true
+
+  - name: Azure Cloud Provider
+    groups:
+    - name: Where to deploy the new infrastructure
+      technologies: [pipeline]
+      vars:
+      - name: "Azure subscription ID"
+        description: "Azure subscription ID for Terraform."
+        key: azure_subscription_id
+        widget: cy_cred
+        type: string
+        default: "((azure_step-by-step.subscription_id))"
+        required: true
+      - name: "Azure tenant ID"
+        description: "Azure tenant ID for Terraform."
+        key: azure_tenant_id
+        widget: cy_cred
+        type: string
+        default: "((azure_step-by-step.tenant_id))"
+        required: true
+      - name: "Azure client ID"
+        description: "Azure client ID for Terraform."
+        key: azure_client_id
+        widget: cy_cred
+        type: string
+        default: "((azure_step-by-step.client_id))"
+        required: true
+      - name: "Azure client secret"
+        description: "Azure client secret for Terraform."
+        key: azure_client_secret
+        widget: cy_cred
+        type: string
+        default: "((azure_step-by-step.client_secret))"
+        required: true
+      - name: "Azure location"
+        description: "Azure location for the new infrastructure."
+        key: azure_location
+        widget: auto_complete
+        type: string
+        values: ["West Europe","North Europe","France Central","France South","East US","West US","East Asia","Southeast Asia","South Africa North","South Africa West","Australia Central","China East","China North"]
+        default: "West Europe"
+        required: true
+      - name: "Azure Resource Group"
+        description: "Azure Resource Group for the new infrastructure."
+        key: rg_name
+        widget: simple_text
+        type: string
+        default: "cycloid-worker"
+        required: true
