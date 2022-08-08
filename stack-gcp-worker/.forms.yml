@@ -59,7 +59,7 @@ use_cases:
         key: gcp_project
         widget: simple_text
         type: string
-        default: "($ organization_canonical $)"
+        default: ""
         required: true
       - name: "GCP region"
         description: "Google Cloud Platform region for new infrastructure."

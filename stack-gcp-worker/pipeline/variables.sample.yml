@@ -5,12 +5,16 @@
 # Google access to use to run terraform. Usually admin service account to be able to create Google services.
 
 #. gcp_project (required): ($ organization_canonical $)
-#+ Google Cloud Platform project to use for Terraform.
+#+ Google Cloud Platform project for new infrastructure.
 gcp_project: ($ organization_canonical $)
 
 #. gcp_region (required): europe-west1
-#+ Google Cloud Platform region to use for Terraform.
+#+ Google Cloud Platform region for new infrastructure.
 gcp_region: europe-west1
+
+#. gcp_zone (required): europe-west1-b
+#+ Google Cloud Platform zone for new infrastructure.
+gcp_zone: europe-west1-b
 
 #. gcp_credentials_json (required): ((gcp.json_key))
 #+ Google Cloud Platform credentials JSON for Terraform. See value format [here](https://docs.cycloid.io/advanced-guide/integrate-and-use-cycloid-credentials-manager.html#vault-in-the-pipeline)

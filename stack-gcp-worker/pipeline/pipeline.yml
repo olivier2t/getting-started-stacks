@@ -34,6 +34,7 @@ resources:
     vars:
       gcp_project: ((gcp_project))
       gcp_region: ((gcp_region))
+      gcp_zone: ((gcp_zone))
       keypair_public: ((keypair_public))
       vm_os_user: ((vm_os_user))
       team_id: ((team_id))
