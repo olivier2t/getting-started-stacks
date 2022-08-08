@@ -91,7 +91,7 @@ use_cases:
         default: "West Europe"
         required: true
       - name: "Azure Resource Group"
-        description: "Azure Resource Group for the new infrastructure."
+        description: "Existing Azure Resource Group where to deploy the new infrastructure."
         key: rg_name
         widget: simple_text
         type: string
