@@ -79,7 +79,7 @@ stack_git_private_key: ((git.ssh_key))
 
 #. stack_terraform_path (required): stack-aws-worker/terraform
 #+ Path of Terraform files in the stack git repository
-stack_terraform_path: stack-aws-worker/terraform
+stack_terraform_path: stack-gcp-worker/terraform
 
 
 #
