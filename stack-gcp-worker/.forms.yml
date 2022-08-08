@@ -62,7 +62,7 @@ use_cases:
         default: "($ organization_canonical $)"
         required: true
       - name: "GCP region"
-        description: "Google Cloud Platform region to use for Terraform."
+        description: "Google Cloud Platform region for new infrastructure."
         key: gcp_region
         widget: auto_complete
         type: string
@@ -71,6 +71,20 @@ use_cases:
             - europe-west1
             - europe-west2
         required: true
+      - name: "GCP zone"
+        description: "Google Cloud Platform zone for new infrastructure."
+        key: gcp_zone
+        widget: auto_complete
+        type: string
+        default: "europe-west1-b"
+        values:
+            - europe-west1-b
+            - europe-west1-c
+            - europe-west1-d
+            - europe-west2-a
+            - europe-west2-b
+            - europe-west2-c
+        required: true      
       - name: "GCP credentials"
         description: "Google Cloud Platform JSON credentials to use for Terraform."
         key: gcp_credentials_json
